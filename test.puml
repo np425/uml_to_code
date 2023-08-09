@@ -1,0 +1,123 @@
+@startuml
+
+class Test {
+    + msg string
+}
+
+namespace core {
+    namespace abc {
+        class test {}
+    }
+
+    class BasicCard {
+        + Activate(ctx Context) GameOver
+
+    }
+    class BasicDamage {
+        - dmg HP
+
+        + Damage() HP
+        + SetDamage(dmg HP) 
+    }
+    class BasicHealth {
+        - hp HP
+
+        + Health() HP
+        + SetHealth(hp HP) 
+
+    }
+    class BasicHero {
+    }
+    class BasicMana {
+        - mana Mana
+
+        + Mana() Mana
+        + SetMana(mana Mana) 
+
+    }
+    class BasicName {
+        - name string
+
+        + Name() string
+        + SetName(name string) 
+
+    }
+    class BasicSpell {
+        - spellClass SpellClass
+
+        + SpellClass() SpellClass
+        + SetSpellClass(spellClass SpellClass) 
+
+    }
+    interface Card {
+        + Activate(ctx Context) GameOver
+    }
+    class Context {
+        - me Player
+        - enemy Player
+
+        + Me() Player
+        + Enemy() Player
+
+    }
+    class Game {
+        + Players Player
+        + CreateContext(p Player) Context
+    }
+    class GameOver {
+        + Winner Player
+        + Loser Player
+
+    }
+    interface HasDamage  {
+        + Damage() HP
+        + SetDamage(dmg HP) 
+
+    }
+    interface HasHealth  {
+        + Health() HP
+        + SetHealth(hp HP) 
+
+    }
+    interface HasMana  {
+        + Mana() Mana
+        + SetMana(mana Mana) 
+
+    }
+    interface HasName  {
+        + Name() string
+        + SetName(name string) 
+
+    }
+    interface Hero  {
+    }
+    interface Minion  {
+    }
+    class Player {
+        - hero Hero
+        - board Minion
+        - hand Card
+        - deck Card
+
+        + Board() Minion
+        + Hand() Card
+        + Deck() Card
+        + Hero() Hero
+        + AddToHand(card Card) 
+
+    }
+    interface Spell  {
+        + SpellClass() SpellClass
+        + SetSpellClass(spellClass SpellClass) 
+
+    }
+    class HP {
+    }
+    class Mana {
+    }
+    class SpellClass {
+    }
+
+    Card <|-- Spell
+}
+@enduml
